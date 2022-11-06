@@ -1,4 +1,5 @@
 FROM php:8.1-fpm
+#FROM php:8.2-rc-fpm
 
 ENV DEBIAN_FRONTEND noninteractive
 

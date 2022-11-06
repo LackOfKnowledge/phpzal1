@@ -14,3 +14,4 @@ services:
     build: 'php'
     volumes:
       - './src:/var/www/localhost'
+      - './php/php.ini:/usr/local/etc/php/conf.d/php-override.ini'
