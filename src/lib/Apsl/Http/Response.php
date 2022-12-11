@@ -7,8 +7,9 @@ class Response
 {
     const HEADER_CONTENT_LENGTH = 'Content-Length';
     const HEADER_CONTENT_TYPE = 'Content-Type';
+    const HEADER_LOCATION = 'Location';
     const CODE_200_OK = 200;
-    const CODE_301_MOVED_PERMAMENTLY = 301;
+    const CODE_301_MOVED_PERMANENTLY = 301;
     const CODE_302_FOUND = 302;
     const CODE_403_FORBIDDEN = 403;
     const CODE_404_NOT_FOUND = 404;
@@ -22,7 +23,7 @@ class Response
     {
         http_response_code($this->statusCode);
 
-        $this->addHeader(self::HEADER_CONTENT_LENGTH, strlen($this->body));
+        $this->setHeader(self::HEADER_CONTENT_LENGTH, strlen($this->body));
         foreach ($this->headers as $name => $value) {
             header("{$name}: {$value}");
         }
@@ -30,7 +31,28 @@ class Response
         echo $this->body;
     }
 
-    public function addHeader(string $name, string $value): void
+    public function redirect(string $uri, bool $permanent = false, bool $immediate = true): void
+    {
+        $this->setStatusCode(($permanent ? self::CODE_301_MOVED_PERMANENTLY : self::CODE_302_FOUND));
+        $this->setHeader(self::HEADER_LOCATION, $uri);
+        $this->setBody('');
+
+        if ($immediate) {
+            $this->send();
+        }
+    }
+
+    public function setCookie(string $name, string $value, int $lifetime = 0, bool $visibleInCurrentRequest = true): void
+    {
+        $expires = ($lifetime !== 0) ? (time() + $lifetime) : 0;
+        setcookie($name, $value, $expires);
+
+        if ($visibleInCurrentRequest) {
+            $_COOKIE[$name] = $value;
+        }
+    }
+
+    public function setHeader(string $name, string $value): void
     {
         $this->headers[$name] = $value;
     }
