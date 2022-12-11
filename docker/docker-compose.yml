@@ -8,12 +8,12 @@ services:
       - '80:80'
     volumes:
       - './nginx/conf.d:/etc/nginx/conf.d'
-      - './src:/var/www/localhost'
+      - './../src:/var/www/localhost'
     links:
       - php
   php:
     build: 'php'
     working_dir: /var/www/localhost
     volumes:
-      - './src:/var/www/localhost'
       - './php/php.ini:/usr/local/etc/php/conf.d/php-override.ini'
+      - './../src:/var/www/localhost'
