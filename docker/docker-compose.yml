@@ -17,3 +17,8 @@ services:
     volumes:
       - './php/php.ini:/usr/local/etc/php/conf.d/php-override.ini'
       - './../src:/var/www/localhost'
+  node:
+    build: 'node'
+    working_dir: /var/www/localhost
+    volumes:
+      - './../src:/var/www/localhost'

@@ -20,3 +20,7 @@
 # Stopping project
 
 1. Run ```docker-compose down```
+
+# Additional
+
+1. If you want to run commands on Node container, try: ```docker-compose run node COMMAND```, e.g. ```docker-compose run node node --version``` or ```docker-compose run node npm --version```
