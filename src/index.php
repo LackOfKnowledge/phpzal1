@@ -2,9 +2,7 @@
 
 require_once './vendor/autoload.php';
 
+use Apsl\Http\Request;
 
-use Apsl\Inf\Lab01\Message;
 
-
-$msg = new Message(name: 'Janusz');
-$msg->output();
+$request = new Request();
