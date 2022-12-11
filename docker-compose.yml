@@ -3,6 +3,7 @@ version: '3'
 services:
   nginx:
     image: 'nginx:latest'
+    working_dir: /var/www/localhost
     ports:
       - '80:80'
     volumes:
@@ -12,6 +13,7 @@ services:
       - php
   php:
     build: 'php'
+    working_dir: /var/www/localhost
     volumes:
       - './src:/var/www/localhost'
       - './php/php.ini:/usr/local/etc/php/conf.d/php-override.ini'
