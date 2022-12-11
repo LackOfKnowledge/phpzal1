@@ -27,23 +27,23 @@ class Request
         return ($this->getMethod() === strtoupper($name));
     }
 
-    public function getValue(string $name)
+    public function getValue(string $name, $default = null)
     {
-        return ($_REQUEST[$name] ?? null);
+        return ($_REQUEST[$name] ?? $default);
     }
 
-    public function getQueryStringValue(string $name)
+    public function getQueryStringValue(string $name, $default = null)
     {
-        return ($_GET[$name] ?? null);
+        return ($_GET[$name] ?? $default);
     }
 
-    public function getPostValue(string $name)
+    public function getPostValue(string $name, $default = null)
     {
-        return ($_POST[$name] ?? null);
+        return ($_POST[$name] ?? $default);
     }
 
-    public function getCookieValue(string $name)
+    public function getCookieValue(string $name, $default = null)
     {
-        return ($_COOKIE[$name] ?? null);
+        return ($_COOKIE[$name] ?? $default);
     }
 }
