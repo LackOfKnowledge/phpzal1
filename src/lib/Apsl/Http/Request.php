@@ -46,4 +46,14 @@ class Request
     {
         return ($_COOKIE[$name] ?? $default);
     }
+
+    public function getCurrentUri(bool $withQueryString = true): string
+    {
+        $uri = $_SERVER['REQUEST_URI'];
+        if ($withQueryString === false) {
+            $uri = explode('?', $uri)[0];
+        }
+
+        return $uri;
+    }
 }
