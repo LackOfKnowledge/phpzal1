@@ -27,13 +27,17 @@ class ContactPage extends BasePage
 
             if (empty($errors)) {
                 // TODO: send email
+
+                $this->response->redirect($this->request->getCurrentUri(withQueryString: false) . '?success=true');
+                return;
             }
         }
 
         $this->response->setBody($this->useTemplate('templates/contact.html.php', [
             'title' => 'Contact Page',
             'errors' => $errors ?? [],
-            'data' => $data ?? []
+            'data' => $data ?? [],
+            'success' => $this->request->getValue('success', false)
         ]));
     }
 }

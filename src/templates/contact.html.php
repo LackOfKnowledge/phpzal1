@@ -7,11 +7,16 @@
     <title><?php echo $title ?></title>
     <style>
         .error { color: #c00; }
+        .success { color: #090 }
     </style>
 </head>
 <body>
 <header>
     <h1>Contact us!</h1>
+
+    <?php if ($success): ?>
+        <p class="success">Thanks for contacting us, we will respond ASAP.</p>
+    <?php endif ?>
 
     <form method="post">
         <ul>
