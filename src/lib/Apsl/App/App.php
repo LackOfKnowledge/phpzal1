@@ -5,7 +5,6 @@ namespace Apsl\App;
 use Apsl\Controller\BasePage;
 use Apsl\Controller\Error404Page;
 use Apsl\Http\Request;
-use Apsl\Http\Response;
 
 
 class App
