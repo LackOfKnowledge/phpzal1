@@ -1,6 +1,7 @@
 # Prerequisites
 
 1. Docker & docker-compose
+2. Symfony Google Mailer
 
 # Installation
 
@@ -11,6 +12,7 @@
 5. Enter php container: ```docker-compose exec php bash```
 6. Download composer into project: ```curl -sS https://getcomposer.org/installer | php```
 7. Run ```./composer.phar install```
+8. Run ```php composer.phar require symfony/google-mailer```
 8. Exit php container: ```exit```
 
 # Launching project
