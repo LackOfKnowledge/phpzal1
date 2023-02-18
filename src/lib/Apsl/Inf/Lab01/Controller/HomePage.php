@@ -14,4 +14,5 @@ class HomePage extends BasePage
             'name' => $this->request->getQueryStringValue(name: 'name', default: 'Anonymous')
         ]));
     }
+
 }
